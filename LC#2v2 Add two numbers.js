@@ -42,16 +42,26 @@ var addTwoNumbers = function(l1, l2) {
   let next = 0;
   while (l1 !== null || l2 !== null) {
     let l1CurrInt, l2CurrInt, tempSum;
+
     if (l1 !== null) {
       //console.log(l1.val);
       l1CurrInt = l1.val;
       l1 = l1.next;
     }
+
     if (l2 !== null) {
       //console.log(l2.val);
       l2CurrInt = l2.val;
       l2 = l2.next;
     }
+
+    let getTempSum = function(tempSum) {
+      if (tempSum >= 10) {
+        tempSum -= 10;
+        next = 1;
+      }
+      return tempSum;
+    };
 
     if (l1CurrInt !== undefined) {
       if (next === 1) {
@@ -59,17 +69,9 @@ var addTwoNumbers = function(l1, l2) {
         l1CurrInt++;
       }
       if (l2CurrInt !== undefined) {
-        tempSum = l1CurrInt + l2CurrInt;
-        if (tempSum >= 10) {
-          tempSum -= 10;
-          next = 1;
-        }
+        tempSum = getTempSum(l1CurrInt + l2CurrInt);
       } else {
-        tempSum = l1CurrInt;
-        if (tempSum >= 10) {
-          tempSum -= 10;
-          next = 1;
-        }
+        tempSum = getTempSum(l1CurrInt);
       }
     } else {
       if (next === 1) {
@@ -77,11 +79,7 @@ var addTwoNumbers = function(l1, l2) {
         l2CurrInt++;
       }
 
-      tempSum = l2CurrInt;
-      if (tempSum >= 10) {
-        tempSum -= 10;
-        next = 1;
-      }
+      tempSum = getTempSum(l2CurrInt);
     }
 
     resultLi.append(tempSum);
