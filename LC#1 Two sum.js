@@ -20,6 +20,7 @@
 // };
 
 // using a better data structure
+// Runtime: 52 ms, faster than 94.11% of JavaScript online submissions for Two Sum.
 
 var twoSum = function(nums, target) {
   let remainders = {};
