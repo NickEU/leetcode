@@ -12,6 +12,7 @@
 //  */
 
 // REALLY bad solution
+// Runtime: 220 ms, faster than 5.21% of JavaScript online submissions for Add Two Numbers.
 
 var addTwoNumbers = function(l1, l2) {
   function traverseList(list) {
