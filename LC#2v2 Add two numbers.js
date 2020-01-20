@@ -17,23 +17,25 @@
 // Can probably get rid of some of the extra checks?
 
 class LinkedList {
-  append(val) {
-    let head = this;
-    //console.log(head);
-    //console.log('inserting ' + val);
-    if (head.val === undefined) {
-      head.val = val;
-      head.next = null;
-      return;
-    }
-    while (head.next !== null) {
-      head = head.next;
-    }
+  constructor() {
+    this.head = null;
+    this.tail = null;
+  }
 
-    head.next = {
+  append(val) {
+    let newNode = {
       val: val,
       next: null
     };
+
+    if (this.head === null) {
+      this.head = newNode;
+      this.tail = this.head;
+      return;
+    }
+
+    this.tail.next = newNode;
+    this.tail = newNode;
   }
 }
 
@@ -42,13 +44,11 @@ var addTwoNumbers = function(l1, l2) {
   let next = 0;
   while (l1 !== null || l2 !== null) {
     let l1CurrInt, l2CurrInt, tempSum;
-
     if (l1 !== null) {
       //console.log(l1.val);
       l1CurrInt = l1.val;
       l1 = l1.next;
     }
-
     if (l2 !== null) {
       //console.log(l2.val);
       l2CurrInt = l2.val;
@@ -62,7 +62,6 @@ var addTwoNumbers = function(l1, l2) {
       }
       return tempSum;
     };
-
     if (l1CurrInt !== undefined) {
       if (next === 1) {
         next = 0;
@@ -90,5 +89,5 @@ var addTwoNumbers = function(l1, l2) {
   }
 
   //console.log(resultLi);
-  return resultLi;
+  return resultLi.head;
 };
