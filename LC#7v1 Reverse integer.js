@@ -3,7 +3,9 @@
  * @return {number}
  */
 var reverse = function(x) {
-  let digitsStr = x >= 0 ? x.toString() : x.toString().substring(1);
+  let intIsNotNegative = x >= 0;
+
+  let digitsStr = intIsNotNegative ? x.toString() : x.toString().substring(1);
 
   let result = parseInt(
     digitsStr
@@ -16,5 +18,5 @@ var reverse = function(x) {
     return 0;
   }
 
-  return x >= 0 ? result : -Math.abs(result);
+  return intIsNotNegative ? result : -1 * result;
 };
