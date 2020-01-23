@@ -10,10 +10,8 @@ var reverse = function(x) {
   let result = 0;
 
   while (int) {
-    result = result * 10;
-    result += int % 10;
+    result = result * 10 + (int % 10);
     int = Math.floor(int / 10);
-    //console.log(int, result);
   }
 
   if (result > 2147483647 || result < -2147483648) {
