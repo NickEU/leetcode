@@ -4,8 +4,7 @@
  */
 // a solution that does not use arrays
 var reverse = function(x) {
-  let intIsNotNegative = x >= 0;
-  let int = intIsNotNegative ? x : -1 * x;
+  let int = Math.abs(x);
 
   let result = 0;
 
@@ -18,5 +17,5 @@ var reverse = function(x) {
     return 0;
   }
 
-  return intIsNotNegative ? result : -1 * result;
+  return x >= 0 ? result : -result;
 };
