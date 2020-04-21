@@ -10,7 +10,7 @@
  * @return {number}
  */
 
-const firstUniqChar = (s) => {
+const firstUniqChar = s => {
   const map = new Map();
   for (let i = 0; i < s.length; i++) {
     const char = s[i];

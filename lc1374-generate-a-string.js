@@ -11,7 +11,7 @@
  * @return {string}
  */
 
-const generateTheString = (n) => {
+const generateTheString = n => {
   const result = Array(n).fill('a');
   if (n % 2 === 0) {
     result[0] = 'b';
