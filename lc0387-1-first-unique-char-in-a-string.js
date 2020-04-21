@@ -12,11 +12,10 @@
 
 const firstUniqChar = (s) => {
   const map = new Map();
-  let id = -1;
-  for (const char of s) {
-    id++;
+  for (let i = 0; i < s.length; i++) {
+    const char = s[i];
     const obj = {
-      id,
+      id: i,
       uniq: !map.get(char),
     };
     map.set(char, obj);
