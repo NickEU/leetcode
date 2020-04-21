@@ -30,4 +30,4 @@ const firstUniqChar = (s) => {
   return -1;
 };
 
-console.log(firstUniqChar('hell0 d0rrlhed'));
+console.log(firstUniqChar('hell0d0rrlhed'));
