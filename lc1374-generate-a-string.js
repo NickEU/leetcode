@@ -1,3 +1,5 @@
+'use strict';
+
 // Given an integer n, return a string with n characters
 // such that each character in such string occurs an odd number of times.
 
@@ -9,10 +11,12 @@
  * @return {string}
  */
 
-var generateTheString = function(n) {
-  let result = Array(n).fill("a");
+const generateTheString = (n) => {
+  const result = Array(n).fill('a');
   if (n % 2 === 0) {
-    result[0] = "b";
+    result[0] = 'b';
   }
   return result;
 };
+
+generateTheString(5);
