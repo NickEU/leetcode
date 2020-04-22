@@ -20,7 +20,7 @@ const buildMap = () => {
   }
   return result;
 };
-
+// using a prebuilt map, bad idea
 const firstUniqChar = s => {
   const characters = buildMap();
 

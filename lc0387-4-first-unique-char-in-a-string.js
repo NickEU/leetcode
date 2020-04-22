@@ -9,37 +9,34 @@
  * @param {string} s
  * @return {number}
  */
-
-// a better approach - dynamically building a hash table.
+// using map and its property to remember the original insertion order
+// we can shave a bunch of iterations off the for .. of cycle
 const firstUniqChar = s => {
-  const characters = {};
+  const characters = new Map();
 
   for (let i = 0; i < s.length; i++) {
     const char = s[i];
-    if (!characters[char]) {
-      characters[char] = {
+    if (!characters.get(char)) {
+      const charObj = {
         count: 0,
       };
+      characters.set(char, charObj);
     }
-    const currentChar = characters[char];
+    const currentChar = characters.get(char);
     if (currentChar.count === 0) {
       currentChar.id = i;
     }
     currentChar.count++;
   }
 
-  let result = -1;
-  let minId = Infinity;
 
-  for (const char of Object.keys(characters)) {
-    const currentChar = characters[char];
-    const id = currentChar.id;
-    if (currentChar.count === 1 && id <= minId) {
-      minId = result = id;
+  for (const char of characters.values()) {
+    if (char.count === 1) {
+      return char.id;
     }
   }
 
-  return result;
+  return -1;
 };
 
 console.log(firstUniqChar('helldrsrlhed'));
