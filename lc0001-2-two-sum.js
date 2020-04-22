@@ -1,3 +1,10 @@
+'use strict';
+// Given an array of integers, return indices of the two numbers
+// such that they add up to a specific target.
+
+// You may assume that each input would have exactly one solution,
+// and you may not use the same element twice.
+
 /**
  * @param {number[]} nums
  * @param {number} target
@@ -5,13 +12,11 @@
  */
 
 // using a better data structure
-// Runtime: 52 ms, faster than 94.11% of JavaScript online submissions for Two Sum.
 
-var twoSum = function(nums, target) {
-  let remainders = {};
+const twoSum = function(nums, target) {
+  const remainders = {};
 
   for (let i = 0; i < nums.length; i++) {
-    //console.log(remainders);
     if (remainders[nums[i]] !== undefined) {
       return [i, remainders[nums[i]]];
     }
@@ -19,3 +24,5 @@ var twoSum = function(nums, target) {
     remainders[target - nums[i]] = i;
   }
 };
+
+console.log(twoSum([2, 4, 6, 9], 10));
