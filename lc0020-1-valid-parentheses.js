@@ -22,39 +22,39 @@ const isValid = function(s) {
   const order = [];
   for (let i = 0; i < s.length; i++) {
     switch (s[i]) {
-    case '(':
-      order.push('(');
-      count.paren++;
-      break;
-    case ')':
-      if (order[order.length - 1] !== '(') {
-        return false;
-      }
-      order.pop();
-      count.paren--;
-      break;
-    case '[':
-      order.push('[');
-      count.square++;
-      break;
-    case ']':
-      if (order[order.length - 1] !== '[') {
-        return false;
-      }
-      order.pop();
-      count.square--;
-      break;
-    case '{':
-      order.push('{');
-      count.squir++;
-      break;
-    case '}':
-      if (order[order.length - 1] !== '{') {
-        return false;
-      }
-      order.pop();
-      count.squir--;
-      break;
+      case '(':
+        order.push('(');
+        count.paren++;
+        break;
+      case ')':
+        if (order[order.length - 1] !== '(') {
+          return false;
+        }
+        order.pop();
+        count.paren--;
+        break;
+      case '[':
+        order.push('[');
+        count.square++;
+        break;
+      case ']':
+        if (order[order.length - 1] !== '[') {
+          return false;
+        }
+        order.pop();
+        count.square--;
+        break;
+      case '{':
+        order.push('{');
+        count.squir++;
+        break;
+      case '}':
+        if (order[order.length - 1] !== '{') {
+          return false;
+        }
+        order.pop();
+        count.squir--;
+        break;
     }
   }
 
