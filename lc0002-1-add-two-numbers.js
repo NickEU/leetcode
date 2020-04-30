@@ -1,3 +1,4 @@
+'use strict';
 // /**
 //  * Definition for singly-linked list.
 //  * function ListNode(val) {
@@ -12,11 +13,10 @@
 //  */
 
 // REALLY bad solution
-// Runtime: 220 ms, faster than 5.21% of JavaScript online submissions for Add Two Numbers.
 
-var addTwoNumbers = function(l1, l2) {
+const addTwoNumbers = function(l1, l2) {
   function traverseList(list) {
-    let result = [];
+    const result = [];
     while (list !== null) {
       result.push(list.val);
       list = list.next;
@@ -24,9 +24,9 @@ var addTwoNumbers = function(l1, l2) {
     return result;
   }
 
-  let firstNumberArr = traverseList(l1);
-  let secondNumberArr = traverseList(l2);
-  let resultArr = [];
+  const firstNumberArr = traverseList(l1);
+  const secondNumberArr = traverseList(l2);
+  const resultArr = [];
   let lead, lesser;
 
   if (firstNumberArr.length < secondNumberArr.length) {
@@ -66,8 +66,6 @@ var addTwoNumbers = function(l1, l2) {
     resultArr.push(lead[i]);
   }
 
-  //console.log(resultArr);
-
   class LinkedList {
     constructor(value) {
       this.val = value;
@@ -80,7 +78,7 @@ var addTwoNumbers = function(l1, l2) {
         head = head.next;
       }
 
-      let newNode = {
+      const newNode = {
         val: value,
         next: null
       };
@@ -89,13 +87,11 @@ var addTwoNumbers = function(l1, l2) {
     }
   }
 
-  let myLinkedList = new LinkedList(resultArr[0]);
+  const myLinkedList = new LinkedList(resultArr[0]);
 
   for (let i = 1; i < resultArr.length; i++) {
     myLinkedList.append(resultArr[i]);
   }
-
-  //console.log(myLinkedList);
 
   return myLinkedList;
 };
