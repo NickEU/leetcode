@@ -1,36 +1,37 @@
+'use strict';
+
+// https://leetcode.com/problems/string-to-integer-atoi/
+
 /**
  * @param {string} str
  * @return {number}
  */
-var myAtoi = function(str) {
+const myAtoi = function(str) {
   let isNegative = false;
   let signRecorded = false;
-  let intStr = "";
+  let intStr = '';
   for (let i = 0; i < str.length; i++) {
-    let currChar = str[i];
-    //console.log(`cur char = ${currChar}`)
-    if (currChar === " " && intStr === "" && !signRecorded) {
+    const currChar = str[i];
+    if (currChar === ' ' && intStr === '' && !signRecorded) {
       continue;
     }
 
-    if ((currChar === "-" || currChar === "+") && !signRecorded) {
-      if (intStr !== "") {
+    if ((currChar === '-' || currChar === '+') && !signRecorded) {
+      if (intStr !== '') {
         return getReturn();
       }
       signRecorded = true;
-      if (currChar === "-") {
+      if (currChar === '-') {
         isNegative = true;
       }
       continue;
     }
 
-    let parseIntResult = parseInt(currChar);
-    //console.log(`converted to = ${parseIntResult}`);
+    const parseIntResult = parseInt(currChar);
     if (isNaN(parseIntResult)) {
       return getReturn();
     } else {
       intStr += parseIntResult;
-      //console.log(intStr);
     }
   }
 
@@ -52,3 +53,9 @@ var myAtoi = function(str) {
 
   return getReturn();
 };
+
+console.log(myAtoi('42') === 42);
+console.log(myAtoi('   -42') === -42);
+console.log(myAtoi('4193 with words') === 4193);
+console.log(myAtoi('words and 987') === 0);
+console.log(myAtoi('-91283472332') === -2147483648);
