@@ -3,6 +3,7 @@
 // common prefix string amongst an array of strings.
 
 // If there is no common prefix, return an empty string "".
+// All given inputs are in lowercase letters a-z.
 
 /**
  * @param {string[]} strs
