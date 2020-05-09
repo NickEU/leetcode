@@ -6,7 +6,7 @@
  * @return {number}
  */
 
-//bad brute force solution
+//brute force solution
 const longestSubarray = function(nums, limit) {
   if (nums.length === 1) {
     return 1;
@@ -14,19 +14,25 @@ const longestSubarray = function(nums, limit) {
   let result = [];
   for (let i = 0; i < nums.length; i++)     {
     const tempSubArr = [nums[i]];
-    let min = nums[i], max = nums[i];
+    let minEl = nums[i], maxEl = nums[i];
     if (result.length > nums.length - i) {
       break;
     }
     for (let j = i + 1; j < nums.length; j++)     {
-      if (Math.abs(nums[j] - min) <= limit &&
-      Math.abs(nums[j] - max) <= limit) {
+      const currEl = nums[j];
+      if (Math.abs(currEl - minEl) <= limit &&
+      Math.abs(currEl - maxEl) <= limit) {
         tempSubArr.push(nums[j]);
         if (j === nums.length - 1 && result.length < tempSubArr.length) {
+          i += j - i;
           result = tempSubArr;
         }
-        min = Math.min(...tempSubArr);
-        max = Math.max(...tempSubArr);
+        if (currEl < minEl) {
+          minEl = currEl;
+        }
+        if (currEl > maxEl) {
+          maxEl = currEl;
+        }
       } else {
         if (result.length < tempSubArr.length) {
           result = tempSubArr;
@@ -35,9 +41,7 @@ const longestSubarray = function(nums, limit) {
       }
     }
   }
-  if (result.length < 1) {
-    result = nums[0];
-  }
+
   return result.length;
 };
 
