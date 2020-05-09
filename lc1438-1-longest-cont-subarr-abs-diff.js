@@ -8,22 +8,23 @@
 
 //brute force solution
 const longestSubarray = function(nums, limit) {
-  if (nums.length === 1) {
+  const numsLen = nums.length;
+  if (numsLen === 1) {
     return 1;
   }
   let result = [];
-  for (let i = 0; i < nums.length; i++)     {
+  for (let i = 0; i < numsLen; i++)     {
     const tempSubArr = [nums[i]];
     let minEl = nums[i], maxEl = nums[i];
-    if (result.length > nums.length - i) {
+    if (result.length > numsLen - i) {
       break;
     }
-    for (let j = i + 1; j < nums.length; j++)     {
+    for (let j = i + 1; j < numsLen; j++)     {
       const currEl = nums[j];
       if (Math.abs(currEl - minEl) <= limit &&
       Math.abs(currEl - maxEl) <= limit) {
         tempSubArr.push(nums[j]);
-        if (j === nums.length - 1 && result.length < tempSubArr.length) {
+        if (j === numsLen - 1 && result.length < tempSubArr.length) {
           i += j - i;
           result = tempSubArr;
         }
