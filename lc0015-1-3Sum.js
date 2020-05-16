@@ -3,18 +3,18 @@
  * @param {number[]} nums
  * @return {number[][]}
  */
-// Slow and wasteful solution, but IT WORKS!!!11
-const twoSum = function(result, arr, targetSum) {
-  if (targetSum !== 0) {
-    targetSum = -targetSum;
-  }
+
+const twoSum = function(result, arr, targetIdx) {
+  const targetSum = -arr[targetIdx];
   const hashT = {};
   for (let i = 0; i < arr.length; i++) {
+    if (i === targetIdx) {
+      continue;
+    }
     const currEl = arr[i];
     if (hashT[currEl] === true) {
-      const firstEl = targetSum === 0 ? targetSum : -targetSum;
-      const potentialTriplet = [firstEl, targetSum - currEl, currEl];
-      potentialTriplet.sort((a, b) => a - b);
+      const potentialTriplet =
+      [-targetSum, targetSum - currEl, currEl].sort((a, b) => a - b);
       if (tripletExistsAndNotDuplicate(result, potentialTriplet)) {
         result.push(potentialTriplet);
       }
@@ -29,13 +29,8 @@ const twoSum = function(result, arr, targetSum) {
 const threeSum = function(nums) {
   const result = [];
   for (let i = 0; i < nums.length; i++) {
-    const tempArr = [...nums];
-    tempArr.splice(i, 1);
-    twoSum(result, tempArr, nums[i]);
-
+    twoSum(result, nums, i);
   }
-
-
   return result;
 };
 
@@ -54,7 +49,6 @@ function tripletExistsAndNotDuplicate(arr, potentialTriplet) {
 
   return true;
 }
-
 
 //console.log(twoSum([2, -2, 4, -5, 7], 3));
 //console.log(threeSum([0, 0]));
