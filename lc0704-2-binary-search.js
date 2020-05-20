@@ -15,11 +15,11 @@ const search = function(nums, target) {
   let startIdx = 0, endIdx = nums.length - 1;
   let cutOff;
   while (true) {
-    if (endIdx - startIdx <= 1) {
-      if (nums[startIdx] === target) {
-        return startIdx;
-      } else if (nums[endIdx] === target) {
+    if (cutOff === endIdx || cutOff === startIdx) {
+      if (nums[endIdx] === target) {
         return endIdx;
+      } else if (nums[startIdx] === target) {
+        return startIdx;
       } else {
         return -1;
       }
