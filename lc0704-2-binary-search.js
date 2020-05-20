@@ -13,7 +13,7 @@
 //using indices, better space && time complexity
 const search = function(nums, target) {
   let startIdx = 0, endIdx = nums.length - 1;
-  let cutOff;
+  let cutOff = Math.floor((endIdx - startIdx) / 2);
   while (true) {
     if (cutOff === endIdx || cutOff === startIdx) {
       if (nums[endIdx] === target) {
@@ -23,9 +23,6 @@ const search = function(nums, target) {
       } else {
         return -1;
       }
-    }
-    if (!cutOff) {
-      cutOff = Math.floor((endIdx - startIdx) / 2);
     }
     if (target > nums[cutOff]) {
       startIdx = cutOff;
