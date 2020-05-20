@@ -13,23 +13,16 @@
 //using indices, better space && time complexity
 const search = function(nums, target) {
   let startIdx = 0, endIdx = nums.length - 1;
-  let cutOff = Math.floor((endIdx - startIdx) / 2);
   while (true) {
-    if (cutOff === endIdx || cutOff === startIdx) {
-      if (nums[endIdx] === target) {
-        return endIdx;
-      } else if (nums[startIdx] === target) {
-        return startIdx;
-      } else {
-        return -1;
-      }
+    const cutOff = startIdx + Math.floor((endIdx - startIdx + 1) / 2);
+    if (startIdx >= endIdx) {
+      return nums[startIdx] === target ? startIdx : -1;
     }
-    if (target > nums[cutOff]) {
+    if (nums[cutOff] <= target) {
       startIdx = cutOff;
     } else {
-      endIdx = cutOff;
+      endIdx = cutOff - 1;
     }
-    cutOff = startIdx + Math.floor((endIdx - startIdx) / 2);
   }
 };
 
