@@ -18,6 +18,7 @@
  * @param {number[]} arr
  * @return {boolean}
  */
+// O(nlogn) time O(n) space
 const canBeEqual = function(target, arr) {
   const targetCopy = target.slice();
   const arrCopy = arr.slice();
