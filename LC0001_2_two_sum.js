@@ -11,17 +11,17 @@
  * @return {number[]}
  */
 
-//brute force approach O(n^2)
+// using a hash table, O(n) time O(n) space
+
 const twoSum = function(nums, target) {
-  const remainders = [];
+  const remainders = {};
 
   for (let i = 0; i < nums.length; i++) {
-    for (let j = 0; j < remainders.length; j++) {
-      if (nums[i] === remainders[j][0]) {
-        return [i, remainders[j][1]];
-      }
+    if (remainders[nums[i]] !== undefined) {
+      return [i, remainders[nums[i]]];
     }
-    remainders.push([target - nums[i], i]);
+
+    remainders[target - nums[i]] = i;
   }
 };
 
