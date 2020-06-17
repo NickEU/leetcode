@@ -28,6 +28,6 @@ public class LC0001_3_two_sum {
           }        
         }
         
-        return new int[] {-1, -1};
+        return null;
       }
 }
