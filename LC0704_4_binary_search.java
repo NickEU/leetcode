@@ -8,7 +8,9 @@ public class LC0704_4_binary_search {
         int start = 0;
         int end = sortedNums.length - 1;
         while (start <= end) {
-          int mid = (start + end) / 2;
+          // to prevent potential integer overflow
+          // instead of (start + end) / 2 we use:
+          int mid = start + (end - start) / 2;
           int currEl = sortedNums[mid];
           if (currEl > target) {
             end = mid - 1;
