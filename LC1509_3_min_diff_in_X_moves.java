@@ -100,12 +100,8 @@ public class LC1509_3_min_diff_in_X_moves {
             // sorts the first part and combines it with the second part,
             // which is already properly sorted
             if (sortUpToIdx != -1) {
-                var leftPart = new ArrayList<>(curList.subList(0, sortUpToIdx));
-                leftPart.sort(Comparator.comparingInt(a -> a));
-                if (leftPart.size() < maxMoves) {
-                    leftPart.addAll(curList.subList(sortUpToIdx, curList.size()));
-                }
-                result[i] = leftPart.stream().mapToInt(x -> x).toArray();
+                curList.subList(0, sortUpToIdx).sort(Comparator.comparingInt(a -> a));
+                result[i] = curList.stream().mapToInt(x -> x).toArray();
             }
         }
         return result;
